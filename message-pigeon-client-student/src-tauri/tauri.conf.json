@@ -54,8 +54,8 @@
     "windows": [
       {
         "title": "Message Pigeon",
-        "width": 600,
-        "height": 500,
+        "width": 700,
+        "height": 650,
         "resizable": true,
         "fullscreen": false
       }
