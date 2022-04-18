@@ -7,7 +7,7 @@ const IndexPage: React.FC = () => {
 
   useMount(() => {
     const token = localStorage.getItem('token');
-    navigate(token ? '/message' : '/login');
+    navigate(token ? '/history' : '/login');
   });
 
   return (

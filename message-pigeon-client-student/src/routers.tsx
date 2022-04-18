@@ -5,7 +5,7 @@ import IndexPage from './index/index.page';
 import BaseLayout from './layout/base.layout';
 import UserLayout from './layout/user.layout';
 import LoginPage from './login/login.page';
-import MessagePage from './message/message.page';
+import HistoryPage from './history/history.page';
 import TeacherPage from './teacher/teacher.page';
 
 const Routers: React.FC = () => {
@@ -15,7 +15,7 @@ const Routers: React.FC = () => {
         <Route path="" element={<IndexPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route element={<UserLayout />}>
-          <Route path="message" element={<MessagePage />} />
+          <Route path="history" element={<HistoryPage />} />
           <Route path="connect-code" element={<ConnectCodePage />} />
           <Route path="teacher" element={<TeacherPage />} />
         </Route>
