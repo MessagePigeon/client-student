@@ -20,6 +20,7 @@ specifiers:
   eslint-plugin-react-hooks: ^4.4.0
   postcss: ^8.4.12
   prettier: ^2.6.2
+  qrcode.react: ^3.0.1
   react: '17'
   react-dom: '17'
   react-redux: ^8.0.0
@@ -34,6 +35,7 @@ dependencies:
   ahooks: 3.3.8_react@17.0.2
   antd: 4.19.5_react-dom@17.0.2+react@17.0.2
   axios: 0.26.1
+  qrcode.react: 3.0.1_react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-redux: 8.0.0_b49bddbe4b905ced4713cb857cca91fa
@@ -2353,6 +2355,14 @@ packages:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
     dev: true
+
+  /qrcode.react/3.0.1_react@17.0.2:
+    resolution: {integrity: sha512-uCNm16ClMCrdM2R20c/zqmdwHcbMQf3K7ey39EiK/UgEKbqWeM0iH2QxW3iDVFzjQKFzH23ICgOyG4gNsJ0/gw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}

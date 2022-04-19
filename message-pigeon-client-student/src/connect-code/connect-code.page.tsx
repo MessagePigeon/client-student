@@ -1,7 +1,28 @@
+import { Card, Typography } from 'antd';
+import { QRCodeSVG } from 'qrcode.react';
 import React from 'react';
+import { useAppSelector } from '../state/hooks';
+import {
+  connectCodeSelector,
+  teacherUrlSelector,
+} from '../state/slices/connect-code.slice';
 
 const ConnectCodePage: React.FC = () => {
-  return <div>ConnectCodePage</div>;
+  const connectCode = useAppSelector(connectCodeSelector);
+  const teacherUrl = useAppSelector(teacherUrlSelector);
+
+  const connectUrl = `${teacherUrl}add-device/${connectCode}`;
+
+  return (
+    <>
+      <Card title="连接代码" className="mb-3">
+        <Typography.Text className="text-3xl">{connectCode}</Typography.Text>
+      </Card>
+      <Card title="二维码">
+        <QRCodeSVG value={connectUrl} size={256} />
+      </Card>
+    </>
+  );
 };
 
 export default ConnectCodePage;

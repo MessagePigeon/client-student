@@ -1,6 +1,12 @@
 import { createAxiosService } from './lib/create-axios-service';
 import { service } from './service';
-import { InitResponse, LoginRequest, LoginResponse } from './types';
+import {
+  ConnectCodeResponse,
+  InitResponse,
+  LoginRequest,
+  LoginResponse,
+  TeacherUrlResponse,
+} from './types';
 
 export class API {
   static async login(url: string, body: LoginRequest) {
@@ -11,5 +17,11 @@ export class API {
   }
   static async init() {
     return await service.get<InitResponse>('/init');
+  }
+  static async getTeacherUrl() {
+    return await service.get<TeacherUrlResponse>('/teacher-url');
+  }
+  static async getConnectCode() {
+    return await service.get<ConnectCodeResponse>('/connect-code');
   }
 }
