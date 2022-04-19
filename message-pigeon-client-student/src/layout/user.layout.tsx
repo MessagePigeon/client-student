@@ -40,11 +40,16 @@ const UserLayout: React.FC = () => {
   });
 
   return (
-    <div className="container mx-auto pt-2">
+    <>
       <Tabs
         defaultActiveKey={location.pathname}
-        onTabClick={(key) => navigate(key)}
+        onChange={(key) => navigate(key)}
         centered
+        renderTabBar={(props, TabBar) => (
+          <div className="fixed top-0 w-full z-50 bg-white px-8">
+            <TabBar {...props} />
+          </div>
+        )}
         tabBarExtraContent={{
           left: (
             <Typography.Text className="text-xl">
@@ -68,7 +73,7 @@ const UserLayout: React.FC = () => {
           { tab: '连接码', key: '/connect-code' },
           { tab: '已绑定教师', key: '/teacher' },
         ].map((tab) => (
-          <Tabs.TabPane {...tab}>
+          <Tabs.TabPane {...tab} className="mt-16 container mx-auto z-0">
             {location.pathname === tab.key && (
               <Spin spinning={initLoading || initUserDataLoading}>
                 <Outlet />
@@ -77,7 +82,7 @@ const UserLayout: React.FC = () => {
           </Tabs.TabPane>
         ))}
       </Tabs>
-    </div>
+    </>
   );
 };
 
