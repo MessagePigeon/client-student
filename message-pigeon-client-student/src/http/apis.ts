@@ -5,6 +5,7 @@ import {
   InitResponse,
   LoginRequest,
   LoginResponse,
+  TeachersResponse,
   TeacherUrlResponse,
 } from './types';
 
@@ -23,5 +24,8 @@ export class API {
   }
   static async getConnectCode() {
     return await service.get<ConnectCodeResponse>('/connect-code');
+  }
+  static async getTeachers() {
+    return await service.get<TeachersResponse>('/teachers');
   }
 }

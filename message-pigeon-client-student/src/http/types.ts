@@ -6,3 +6,5 @@ export type InitResponse = { defaultRemark: string };
 export type TeacherUrlResponse = { url: string };
 
 export type ConnectCodeResponse = { connectCode: string };
+
+export type TeachersResponse = Array<{ id: string; name: string }>;
