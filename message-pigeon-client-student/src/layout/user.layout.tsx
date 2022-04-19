@@ -1,5 +1,5 @@
 import { useBoolean, useRequest } from 'ahooks';
-import { Button, message, Tabs, Typography } from 'antd';
+import { Button, message, Spin, Tabs, Typography } from 'antd';
 import React from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { API } from '../http/apis';
@@ -11,7 +11,7 @@ const UserLayout: React.FC = () => {
   const location = useLocation();
 
   const [initSuccess, { setTrue: setInitSuccess }] = useBoolean();
-  const { data } = useRequest(API.init, {
+  const { data, loading: initLoading } = useRequest(API.init, {
     onError() {
       localStorage.removeItem('token');
       navigate('/login');
@@ -19,6 +19,7 @@ const UserLayout: React.FC = () => {
     onSuccess() {
       setInitSuccess();
     },
+    refreshDeps: [location.pathname],
   });
 
   const [wsInitSuccess, { setTrue: setWsInitSuccess }] = useBoolean();
@@ -34,7 +35,9 @@ const UserLayout: React.FC = () => {
     },
   });
 
-  useInitUserData({ ready: wsInitSuccess });
+  const { loading: initUserDataLoading } = useInitUserData({
+    ready: wsInitSuccess,
+  });
 
   return (
     <div className="container mx-auto pt-2">
@@ -60,15 +63,19 @@ const UserLayout: React.FC = () => {
           ),
         }}
       >
-        <Tabs.TabPane tab="历史记录" key="/history">
-          {location.pathname === '/history' && <Outlet />}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="连接码" key="/connect-code">
-          {location.pathname === '/connect-code' && <Outlet />}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="已绑定教师" key="/teacher">
-          {location.pathname === '/teacher' && <Outlet />}
-        </Tabs.TabPane>
+        {[
+          { tab: '历史记录', key: '/history' },
+          { tab: '连接码', key: '/connect-code' },
+          { tab: '已绑定教师', key: '/teacher' },
+        ].map((tab) => (
+          <Tabs.TabPane {...tab}>
+            {location.pathname === tab.key && (
+              <Spin spinning={initLoading || initUserDataLoading}>
+                <Outlet />
+              </Spin>
+            )}
+          </Tabs.TabPane>
+        ))}
       </Tabs>
     </div>
   );
