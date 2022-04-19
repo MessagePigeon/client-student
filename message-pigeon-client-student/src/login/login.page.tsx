@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
     wss: true,
   });
 
-  const { run } = useRequest(API.login, {
+  const { run, loading } = useRequest(API.login, {
     manual: true,
     onSuccess(response) {
       localStorage.setItem('baseUrl', formData.baseUrl);
@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
                 <Switch checkedChildren="wss" unCheckedChildren="ws" />
               </Form.Item>
               <Form.Item className="inline-flex">
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" loading={loading}>
                   登录
                 </Button>
               </Form.Item>
