@@ -61,4 +61,8 @@ export const websocketEvents = {
     store.dispatch(teachersActions.remove({ id: teacherId }));
     message.info(`与 ${name}老师 断开绑定`);
   },
+  logout: () => {
+    localStorage.removeItem('token');
+    location.reload();
+  },
 };
