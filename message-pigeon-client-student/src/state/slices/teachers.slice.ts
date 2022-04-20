@@ -16,6 +16,21 @@ export const teachersSlice = createSlice({
     set(state, action: PayloadAction<Teacher[]>) {
       state.teachers = action.payload;
     },
+    add(state, action: PayloadAction<Teacher>) {
+      state.teachers.unshift(action.payload);
+    },
+    remove(state, action: PayloadAction<{ id: string }>) {
+      const index = state.teachers.findIndex(
+        ({ id }) => id === action.payload.id,
+      );
+      state.teachers.splice(index, 1);
+    },
+    changeName(state, action: PayloadAction<{ id: string; newName: string }>) {
+      const index = state.teachers.findIndex(
+        ({ id }) => id === action.payload.id,
+      );
+      state.teachers[index].name = action.payload.newName;
+    },
   },
 });
 

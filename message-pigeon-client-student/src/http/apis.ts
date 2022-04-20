@@ -1,6 +1,8 @@
 import { createAxiosService } from './lib/create-axios-service';
 import { service } from './service';
 import {
+  AcceptConnectRequestResponse,
+  AnswerConnectRequestRequest,
   ConnectCodeResponse,
   InitResponse,
   LoginRequest,
@@ -27,5 +29,14 @@ export class API {
   }
   static async getTeachers() {
     return await service.get<TeachersResponse>('/teachers');
+  }
+  static async acceptConnectRequest(body: AnswerConnectRequestRequest) {
+    return await service.post<AcceptConnectRequestResponse>(
+      '/connect-request-acceptance',
+      body,
+    );
+  }
+  static async rejectConnectRequest(body: AnswerConnectRequestRequest) {
+    return await service.post('/connect-request-rejection', body);
   }
 }
