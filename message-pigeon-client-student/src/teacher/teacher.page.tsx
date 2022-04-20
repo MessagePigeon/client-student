@@ -7,13 +7,13 @@ const TeacherPage: React.FC = () => {
   const teachers = useAppSelector(teachersSelector);
 
   return (
-    <div>
+    <>
       {teachers.map(({ id, name }) => (
         <Button key={id} shape="round" className="ml-1 mb-1">
           {name}
         </Button>
       ))}
-    </div>
+    </>
   );
 };
 
