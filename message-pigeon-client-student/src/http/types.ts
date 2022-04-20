@@ -14,3 +14,15 @@ export type AcceptConnectRequestResponse = {
   teacherId: string;
   teacherName: string;
 };
+
+export type PaginationRequest = { skip: number; take: number };
+type PaginationResponse<T> = {
+  data: T[];
+  total: number;
+};
+export type MessagesResponse = PaginationResponse<{
+  id: number;
+  createdAt: string;
+  message: string;
+  teacherName: string;
+}>;

@@ -2,6 +2,7 @@ import { useRequest } from 'ahooks';
 import { API } from '../../http/apis';
 import { useAppDispatch } from '../../state/hooks';
 import { connectCodeActions } from '../../state/slices/connect-code.slice';
+import { messagesActions } from '../../state/slices/messages.slice';
 import { teachersActions } from '../../state/slices/teachers.slice';
 
 export function useInitUserData({ ready }: { ready: boolean }) {
@@ -28,7 +29,19 @@ export function useInitUserData({ ready }: { ready: boolean }) {
     },
   });
 
+  const { loading: getMessagesLoading } = useRequest(API.getMessages, {
+    ready,
+    defaultParams: [{ skip: 0, take: 10 }],
+    onSuccess(response) {
+      dispatch(messagesActions.set(response.data.data));
+      dispatch(messagesActions.setTotal(response.data.total));
+    },
+  });
+
   const loading =
-    getTeacherUrlLoading || getConnectCodeLoading || getTeachersLoading;
+    getTeacherUrlLoading ||
+    getConnectCodeLoading ||
+    getTeachersLoading ||
+    getMessagesLoading;
   return { loading };
 }

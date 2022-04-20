@@ -13,6 +13,7 @@ specifiers:
   antd: ^4.19.5
   autoprefixer: ^10.4.4
   axios: ^0.26.1
+  dayjs: ^1.11.1
   eslint: ^8.13.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.0.0
@@ -35,6 +36,7 @@ dependencies:
   ahooks: 3.3.8_react@17.0.2
   antd: 4.19.5_react-dom@17.0.2+react@17.0.2
   axios: 0.26.1
+  dayjs: 1.11.1
   qrcode.react: 3.0.1_react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2

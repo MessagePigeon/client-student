@@ -7,6 +7,8 @@ import {
   InitResponse,
   LoginRequest,
   LoginResponse,
+  MessagesResponse,
+  PaginationRequest,
   TeachersResponse,
   TeacherUrlResponse,
 } from './types';
@@ -38,5 +40,8 @@ export class API {
   }
   static async rejectConnectRequest(body: AnswerConnectRequestRequest) {
     return await service.post('/connect-request-rejection', body);
+  }
+  static async getMessages(params: PaginationRequest) {
+    return await service.get<MessagesResponse>('/messages', { params });
   }
 }
