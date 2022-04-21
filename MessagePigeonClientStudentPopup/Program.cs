@@ -16,7 +16,6 @@ namespace MessagePigeonClientStudentPopup
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             string argTeacherName = "";
             string argMessage = "";
             string argDelayTimeStr = "";

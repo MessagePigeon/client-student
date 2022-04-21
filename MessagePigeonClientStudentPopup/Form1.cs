@@ -15,6 +15,7 @@ namespace MessagePigeonClientStudentPopup
     {
         public Form1()
         {
+            Icon = Properties.Resources.pigeon_logo;
             InitializeComponent();
         }
 

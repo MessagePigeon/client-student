@@ -26,6 +26,8 @@ namespace MessagePigeonClientStudentPopup
         public Form2(string teacherName, string message, uint delayTime, bool closeRequest, string token,
             uint messageId, string baseUrl)
         {
+            Icon = Properties.Resources.pigeon_logo;
+
             TeacherName = teacherName;
             Message = message;
             DelayTime = delayTime;
@@ -92,7 +94,7 @@ namespace MessagePigeonClientStudentPopup
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             var content = new StringContent($"{{\"messageId\":{MessageId}}}", Encoding.UTF8, "application/json");
             var res = await client.PostAsync("/student/message-close", content);
-            await res.Content.ReadAsStringAsync();
+            var response = await res.Content.ReadAsStringAsync();
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
