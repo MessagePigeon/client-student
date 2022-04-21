@@ -21,33 +21,50 @@ namespace MessagePigeonClientStudentPopup
             string argMessage = "";
             string argDelayTimeStr = "";
             bool debug = true;
+            bool closeRequest = false;
+            string argToken = "";
+            string argMessageIdStr = "";
+            string argBaseUrl = "";
             for (int i = 0; i < args.Length; i++)
             {
                 if (args[i] == "--no-debug")
                 {
                     debug = false;
-                    continue;
                 }
-
-                if (args[i] == "--teacher-name")
+                else if (args[i] == "--close-request")
+                {
+                    closeRequest = true;
+                }
+                else if (args[i] == "--teacher-name")
                 {
                     argTeacherName = args[i + 1];
                     i++;
-                    continue;
                 }
-
-                if (args[i] == "--delay-time")
+                else if (args[i] == "--delay-time")
                 {
                     argDelayTimeStr = args[i + 1];
                     i++;
-                    continue;
                 }
-
-                if (args[i] == "--message-start")
+                else if (args[i] == "--token")
+                {
+                    argToken = args[i + 1];
+                    i++;
+                }
+                else if (args[i] == "--message-id")
+                {
+                    argMessage = args[i + 1];
+                    i++;
+                }
+                else if (args[i] == "--base-url")
+                {
+                    argBaseUrl = args[i + 1];
+                    i++;
+                }
+                else if (args[i] == "--message-start")
                 {
                     for (int j = i + 1; args[j] != "--message-end"; j++)
                     {
-                        argMessage += args[j].Replace(@"\n",Environment.NewLine);
+                        argMessage += args[j].Replace(@"\n", Environment.NewLine);
                         if (args[j + 1] != "--message-end")
                         {
                             argMessage += " ";
@@ -66,14 +83,22 @@ namespace MessagePigeonClientStudentPopup
             }
             else
             {
-                if (uint.TryParse(argDelayTimeStr, out uint delayTime))
+                bool delayTimeParseSuccess = uint.TryParse(argDelayTimeStr, out uint delayTime);
+                bool messageIdParseSuccess = uint.TryParse(argMessageIdStr, out uint messageId);
+                if (!delayTimeParseSuccess)
                 {
-                    Application.Run(new Form2(argTeacherName, argMessage, delayTime));
+                    MessageBox.Show(@"时间必须为数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
+
+                if (!messageIdParseSuccess && closeRequest)
                 {
-                    MessageBox.Show(@"时间非数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"消息ID必须为数字", @"消息ID错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                Application.Run(new Form2(argTeacherName, argMessage, delayTime, closeRequest, argToken, messageId,
+                    argBaseUrl));
             }
         }
     }

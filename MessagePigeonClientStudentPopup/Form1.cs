@@ -20,15 +20,30 @@ namespace MessagePigeonClientStudentPopup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (uint.TryParse(delayTimeInput.Text, out uint delayTime))
+            bool delayTimeParseSuccess = uint.TryParse(delayTimeInput.Text, out uint delayTime);
+            bool messageIdParseSuccess = uint.TryParse(messageIdInput.Text, out uint messageId);
+            if (!delayTimeParseSuccess)
             {
-                var popupForm = new Form2(teacherNameInput.Text, messageInput.Text, delayTime);
-                popupForm.Show();
+                MessageBox.Show(@"时间必须为数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            if (!messageIdParseSuccess && closeRequestCheckBox.Checked)
             {
-                MessageBox.Show(@"时间非数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"消息ID必须为数字", @"消息ID错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            var popupForm = new Form2(teacherNameInput.Text, messageInput.Text, delayTime,
+                closeRequestCheckBox.Checked, tokenInput.Text, messageId, baseUrlInput.Text);
+            popupForm.Show();
+        }
+
+        private void closeRequestCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            baseUrlInput.Enabled = closeRequestCheckBox.Checked;
+            tokenInput.Enabled= closeRequestCheckBox.Checked;
+            messageIdInput.Enabled= closeRequestCheckBox.Checked;
         }
     }
 }
