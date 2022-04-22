@@ -2,6 +2,7 @@ import { useInViewport, useRequest, useUpdateEffect } from 'ahooks';
 import { Button, Card, Spin, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React, { useRef } from 'react';
+import { popupMessage } from '../common/helpers/popup-message.helpers';
 import { API } from '../http/apis';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import {
@@ -40,7 +41,17 @@ const HistoryPage: React.FC = () => {
           title={message.teacherName}
           className="mb-4"
           extra={
-            <Button type="link" size="small">
+            <Button
+              type="link"
+              size="small"
+              onClick={() => {
+                popupMessage({
+                  message: message.message,
+                  teacherName: message.teacherName,
+                  delayTime: 0,
+                });
+              }}
+            >
               重新显示
             </Button>
           }

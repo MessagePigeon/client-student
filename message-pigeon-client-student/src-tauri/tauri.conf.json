@@ -22,7 +22,9 @@
         "icons/icon.ico"
       ],
       "resources": [],
-      "externalBin": [],
+      "externalBin": [
+        "binaries/popup"
+      ],
       "copyright": "",
       "category": "DeveloperTool",
       "shortDescription": "",
@@ -49,7 +51,18 @@
       "active": false
     },
     "allowlist": {
-      "all": true
+      "all": true,
+      "shell": {
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "binaries/popup",
+            "sidecar": true,
+            "cmd": "",
+            "args": true
+          }
+        ]
+      }
     },
     "windows": [
       {
