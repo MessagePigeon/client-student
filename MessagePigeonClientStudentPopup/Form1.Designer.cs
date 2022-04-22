@@ -80,9 +80,10 @@
             // 
             this.messageInput.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.messageInput.Location = new System.Drawing.Point(18, 47);
-            this.messageInput.MaxLength = 300;
+            this.messageInput.MaxLength = 99999;
             this.messageInput.Multiline = true;
             this.messageInput.Name = "messageInput";
+            this.messageInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.messageInput.Size = new System.Drawing.Size(274, 175);
             this.messageInput.TabIndex = 1;
             this.messageInput.Text = "测试消息";
