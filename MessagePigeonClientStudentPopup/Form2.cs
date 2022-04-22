@@ -40,7 +40,7 @@ namespace MessagePigeonClientStudentPopup
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            label1.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            label1.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, 0);
             SetDefaultTitle();
             label1.Text = Message;
             if (Size.Width >= Screen.PrimaryScreen.Bounds.Width - 50)
