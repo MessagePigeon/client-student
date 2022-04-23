@@ -18,18 +18,14 @@ export const websocketEvents = {
     teacherName: string;
   }) => {
     const allowConnect = await ask(`是否绑定 ${teacherName}老师`, '绑定请求');
-    try {
-      if (allowConnect) {
-        const { data } = await API.acceptConnectRequest({ requestId });
-        store.dispatch(
-          teachersActions.add({ id: data.teacherId, name: data.teacherName }),
-        );
-        message.success(`与 ${teacherName}老师 绑定成功`);
-      } else {
-        await API.rejectConnectRequest({ requestId });
-      }
-    } catch (error) {
-      message.error('绑定教师出错, 请重新请求');
+    if (allowConnect) {
+      const { data } = await API.acceptConnectRequest({ requestId });
+      store.dispatch(
+        teachersActions.add({ id: data.teacherId, name: data.teacherName }),
+      );
+      message.success(`与 ${teacherName}老师 绑定成功`);
+    } else {
+      await API.rejectConnectRequest({ requestId });
     }
   },
   'teacher-connect-by-admin': (data: {
