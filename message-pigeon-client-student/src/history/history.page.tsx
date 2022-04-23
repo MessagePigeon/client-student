@@ -2,7 +2,7 @@ import { useInViewport, useRequest, useUpdateEffect } from 'ahooks';
 import { Button, Card, Spin, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React, { useRef } from 'react';
-import { popupMessage } from '../common/helpers/popup-message.helpers';
+import { PopupMessage } from '../common/helpers/popup-message.helper';
 import { API } from '../http/apis';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import {
@@ -11,12 +11,15 @@ import {
   messagesSelector,
   messagesTotalSelector,
 } from '../state/slices/messages.slice';
+import { openingMessageIdsSelector } from '../state/slices/opening-messages.slice';
 
 const HistoryPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const messages = useAppSelector(messagesSelector);
   const count = useAppSelector(messagesCountSelector);
   const total = useAppSelector(messagesTotalSelector);
+
+  const openingMessageIds = useAppSelector(openingMessageIdsSelector);
 
   const { run } = useRequest(() => API.getMessages({ skip: count, take: 10 }), {
     onSuccess(response) {
@@ -44,13 +47,14 @@ const HistoryPage: React.FC = () => {
             <Button
               type="link"
               size="small"
-              onClick={() => {
-                popupMessage({
+              onClick={async () => {
+                await PopupMessage.open(message.id, {
                   message: message.message,
                   teacherName: message.teacherName,
                   delayTime: 0,
                 });
               }}
+              disabled={openingMessageIds.includes(message.id)}
             >
               重新显示
             </Button>
