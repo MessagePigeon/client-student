@@ -1,10 +1,14 @@
 import { ask } from '@tauri-apps/api/dialog';
 import { message } from 'antd';
+import dayjs from 'dayjs';
+import { popupMessage } from '../common/helpers/popup-message.helper';
 import { API } from '../http/apis';
+import { messagesActions } from '../state/slices/messages.slice';
+import { openingMessagesActions } from '../state/slices/opening-messages.slice';
 import { teachersActions } from '../state/slices/teachers.slice';
-import { store } from '../state/store';
+import { RootState, store } from '../state/store';
 
-let state: ReturnType<typeof store.getState>;
+let state: RootState;
 store.subscribe(() => {
   state = store.getState();
 });
@@ -60,5 +64,36 @@ export const websocketEvents = {
   logout: () => {
     localStorage.removeItem('token');
     location.reload();
+  },
+  message: async (data: {
+    messageId: number;
+    message: string;
+    teacherName: string;
+    closeDelay: number;
+    tts: number;
+  }) => {
+    await popupMessage(
+      {
+        id: data.messageId,
+        message: data.message,
+        closeDelay: data.closeDelay,
+        teacherName: data.teacherName,
+      },
+      { sendRequestOnClose: true },
+    );
+    store.dispatch(
+      messagesActions.unshift({
+        id: data.messageId,
+        message: data.message,
+        teacherName: data.teacherName,
+        createdAt: dayjs().format(),
+      }),
+    );
+  },
+  'close-message': async ({ messageId }: { messageId: number }) => {
+    store.dispatch(openingMessagesActions.setCloseByTeacher({ id: messageId }));
+    await state.openingMessages.openingMessages
+      .find(({ id }) => id === messageId)
+      ?.proc.kill();
   },
 };

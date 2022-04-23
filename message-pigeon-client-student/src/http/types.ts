@@ -26,3 +26,5 @@ export type MessagesResponse = PaginationResponse<{
   message: string;
   teacherName: string;
 }>;
+
+export type MessageCloseRequest = { messageId: number };

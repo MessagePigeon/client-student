@@ -2,7 +2,7 @@ import { useInViewport, useRequest, useUpdateEffect } from 'ahooks';
 import { Button, Card, Spin, Typography } from 'antd';
 import dayjs from 'dayjs';
 import React, { useRef } from 'react';
-import { PopupMessage } from '../common/helpers/popup-message.helper';
+import { popupMessage } from '../common/helpers/popup-message.helper';
 import { API } from '../http/apis';
 import { useAppDispatch, useAppSelector } from '../state/hooks';
 import {
@@ -24,7 +24,7 @@ const HistoryPage: React.FC = () => {
   const { run } = useRequest(() => API.getMessages({ skip: count, take: 10 }), {
     onSuccess(response) {
       dispatch(messagesActions.setTotal(response.data.total));
-      dispatch(messagesActions.append(response.data.data));
+      dispatch(messagesActions.appendMany(response.data.data));
     },
   });
 
@@ -38,7 +38,7 @@ const HistoryPage: React.FC = () => {
 
   return (
     <>
-      {messages.map((message) => (
+      {messages.map(({ createdAt, ...message }) => (
         <Card
           key={message.id}
           title={message.teacherName}
@@ -48,10 +48,9 @@ const HistoryPage: React.FC = () => {
               type="link"
               size="small"
               onClick={async () => {
-                await PopupMessage.open(message.id, {
-                  message: message.message,
-                  teacherName: message.teacherName,
-                  delayTime: 0,
+                await popupMessage({
+                  ...message,
+                  closeDelay: 0,
                 });
               }}
               disabled={openingMessageIds.includes(message.id)}
@@ -62,7 +61,7 @@ const HistoryPage: React.FC = () => {
         >
           <div className="whitespace-pre-wrap">{message.message}</div>
           <Typography.Text type="secondary" className="text-xs">
-            {dayjs(message.createdAt).format('YYYY.MM.DD HH:mm:ss')}
+            {dayjs(createdAt).format('YYYY.MM.DD HH:mm:ss')}
           </Typography.Text>
         </Card>
       ))}

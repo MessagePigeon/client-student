@@ -5,6 +5,9 @@ import messages from './slices/messages.slice';
 import openingMessages from './slices/opening-messages.slice';
 
 export const store = configureStore({
+  // `openingMessages` need to store instances, so serializable check should be false
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
   reducer: { connectCode, teachers, messages, openingMessages },
 });
 

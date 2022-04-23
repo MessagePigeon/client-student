@@ -7,6 +7,7 @@ import {
   InitResponse,
   LoginRequest,
   LoginResponse,
+  MessageCloseRequest,
   MessagesResponse,
   PaginationRequest,
   TeachersResponse,
@@ -43,5 +44,8 @@ export class API {
   }
   static async getMessages(params: PaginationRequest) {
     return await service.get<MessagesResponse>('/messages', { params });
+  }
+  static async closeMessage(body: MessageCloseRequest) {
+    return await service.post('/message-close', body);
   }
 }

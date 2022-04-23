@@ -22,11 +22,14 @@ export const messagesSlice = createSlice({
     set(state, action: PayloadAction<Message[]>) {
       state.messages = action.payload;
     },
-    append(state, action: PayloadAction<Message[]>) {
+    appendMany(state, action: PayloadAction<Message[]>) {
       state.messages = [...state.messages, ...action.payload];
     },
     setTotal(state, action: PayloadAction<number>) {
       state.total = action.payload;
+    },
+    unshift(state, action: PayloadAction<Message>) {
+      state.messages.unshift(action.payload);
     },
   },
 });
