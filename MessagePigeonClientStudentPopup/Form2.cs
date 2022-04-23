@@ -14,15 +14,15 @@ namespace MessagePigeonClientStudentPopup
     {
         public string Title;
         public string Message;
-        public uint DelayTime;
+        public uint CloseDelay;
 
-        public Form2(string title, string message, uint delayTime)
+        public Form2(string title, string message, uint closeDelay)
         {
             Icon = Properties.Resources.pigeon_logo;
 
             Title = title;
             Message = message;
-            DelayTime = delayTime;
+            CloseDelay = closeDelay;
             InitializeComponent();
         }
 
@@ -36,7 +36,7 @@ namespace MessagePigeonClientStudentPopup
                 Location = new Point(0, Location.Y);
             }
 
-            if (DelayTime > 0)
+            if (CloseDelay > 0)
             {
                 ReduceDelayTime();
                 timer1.Enabled = true;
@@ -46,7 +46,7 @@ namespace MessagePigeonClientStudentPopup
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (DelayTime == 0)
+            if (CloseDelay == 0)
             {
                 timer1.Enabled = false;
                 timer1.Stop();
@@ -61,8 +61,8 @@ namespace MessagePigeonClientStudentPopup
         private void ReduceDelayTime()
         {
             MinimizeBox = false;
-            Text = $@"{Title} {DelayTime}";
-            DelayTime--;
+            Text = $@"{Title} {CloseDelay}";
+            CloseDelay--;
         }
 
         private void SetDefaultTitle()
@@ -72,7 +72,7 @@ namespace MessagePigeonClientStudentPopup
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = DelayTime > 0;
+            e.Cancel = CloseDelay > 0;
         }
     }
 }

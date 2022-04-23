@@ -25,7 +25,7 @@ export async function popupMessage(args: Args, options?: Options) {
     '--message-start',
     args.message,
     '--message-end',
-    '--delay-time',
+    '--close-delay',
     `${args.closeDelay}`,
     '--title',
     `来自 ${args.teacherName}老师 的消息`,

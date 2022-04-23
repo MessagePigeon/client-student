@@ -18,7 +18,7 @@ namespace MessagePigeonClientStudentPopup
             Application.SetCompatibleTextRenderingDefault(false);
             string argTitle = "";
             string argMessage = "";
-            string argDelayTimeStr = "";
+            string argCloseDelayStr = "";
             bool debug = true;
             for (int i = 0; i < args.Length; i++)
             {
@@ -36,9 +36,9 @@ namespace MessagePigeonClientStudentPopup
                     argTitle = args[i + 1];
                     i++;
                 }
-                else if (args[i] == "--delay-time")
+                else if (args[i] == "--close-delay")
                 {
-                    argDelayTimeStr = args[i + 1];
+                    argCloseDelayStr = args[i + 1];
                     i++;
                 }
                 else if (args[i] == "--message-start")
@@ -64,14 +64,14 @@ namespace MessagePigeonClientStudentPopup
             }
             else
             {
-                bool delayTimeParseSuccess = uint.TryParse(argDelayTimeStr, out uint delayTime);
+                bool delayTimeParseSuccess = uint.TryParse(argCloseDelayStr, out uint closeDelay);
                 if (!delayTimeParseSuccess)
                 {
-                    MessageBox.Show(@"Delay Time Must Be Number", @"Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                Application.Run(new Form2(argTitle, argMessage, delayTime));
+                Application.Run(new Form2(argTitle, argMessage, closeDelay));
             }
         }
     }

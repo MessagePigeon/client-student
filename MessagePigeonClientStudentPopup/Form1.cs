@@ -21,14 +21,14 @@ namespace MessagePigeonClientStudentPopup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool delayTimeParseSuccess = uint.TryParse(delayTimeInput.Text, out uint delayTime);
+            bool delayTimeParseSuccess = uint.TryParse(closeDelayInput.Text, out uint closeDelay);
             if (!delayTimeParseSuccess)
             {
-                MessageBox.Show(@"Delay Time Must Be Number", @"Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var popupForm = new Form2(titleInput.Text, messageInput.Text, delayTime);
+            var popupForm = new Form2(titleInput.Text, messageInput.Text, closeDelay);
             popupForm.Show();
         }
     }

@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.delayTimeInput = new System.Windows.Forms.TextBox();
+            this.closeDelayInput = new System.Windows.Forms.TextBox();
             this.messageInput = new System.Windows.Forms.TextBox();
             this.titleInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,19 +53,19 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(27, 269);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 20);
+            this.label1.Size = new System.Drawing.Size(166, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Close Delay Time (s) :";
+            this.label1.Text = "Close Delay Time (sec) :";
             // 
-            // delayTimeInput
+            // closeDelayInput
             // 
-            this.delayTimeInput.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.delayTimeInput.Location = new System.Drawing.Point(184, 266);
-            this.delayTimeInput.MaxLength = 3;
-            this.delayTimeInput.Name = "delayTimeInput";
-            this.delayTimeInput.Size = new System.Drawing.Size(61, 26);
-            this.delayTimeInput.TabIndex = 2;
-            this.delayTimeInput.Text = "0";
+            this.closeDelayInput.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.closeDelayInput.Location = new System.Drawing.Point(199, 266);
+            this.closeDelayInput.MaxLength = 3;
+            this.closeDelayInput.Name = "closeDelayInput";
+            this.closeDelayInput.Size = new System.Drawing.Size(61, 26);
+            this.closeDelayInput.TabIndex = 2;
+            this.closeDelayInput.Text = "0";
             // 
             // messageInput
             // 
@@ -107,7 +107,7 @@
             this.Controls.Add(this.titleInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.messageInput);
-            this.Controls.Add(this.delayTimeInput);
+            this.Controls.Add(this.closeDelayInput);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -122,10 +122,10 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox delayTimeInput;
         private System.Windows.Forms.TextBox messageInput;
         private System.Windows.Forms.TextBox titleInput;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox closeDelayInput;
     }
 }
 
