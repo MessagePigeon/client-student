@@ -22,8 +22,8 @@ export class PopupMessage {
       '--message-end',
       '--delay-time',
       `${baseArgs.delayTime}`,
-      '--teacher-name',
-      baseArgs.teacherName,
+      '--title',
+      `来自 ${baseArgs.teacherName}老师 的消息`,
     ]);
     cmd.on('close', () => {
       store.dispatch(openingMessagesActions.remove({ id }));

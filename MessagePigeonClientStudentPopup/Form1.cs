@@ -22,29 +22,14 @@ namespace MessagePigeonClientStudentPopup
         private void button1_Click(object sender, EventArgs e)
         {
             bool delayTimeParseSuccess = uint.TryParse(delayTimeInput.Text, out uint delayTime);
-            bool messageIdParseSuccess = uint.TryParse(messageIdInput.Text, out uint messageId);
             if (!delayTimeParseSuccess)
             {
-                MessageBox.Show(@"时间必须为数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Delay Time Must Be Number", @"Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!messageIdParseSuccess && closeRequestCheckBox.Checked)
-            {
-                MessageBox.Show(@"消息ID必须为数字", @"消息ID错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var popupForm = new Form2(teacherNameInput.Text, messageInput.Text, delayTime,
-                closeRequestCheckBox.Checked, tokenInput.Text, messageId, baseUrlInput.Text);
+            var popupForm = new Form2(titleInput.Text, messageInput.Text, delayTime);
             popupForm.Show();
-        }
-
-        private void closeRequestCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            baseUrlInput.Enabled = closeRequestCheckBox.Checked;
-            tokenInput.Enabled= closeRequestCheckBox.Checked;
-            messageIdInput.Enabled= closeRequestCheckBox.Checked;
         }
     }
 }

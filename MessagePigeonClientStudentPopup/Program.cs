@@ -16,47 +16,29 @@ namespace MessagePigeonClientStudentPopup
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string argTeacherName = "";
+            string argTitle = "";
             string argMessage = "";
             string argDelayTimeStr = "";
             bool debug = true;
-            bool closeRequest = false;
-            string argToken = "";
-            string argMessageIdStr = "";
-            string argBaseUrl = "";
             for (int i = 0; i < args.Length; i++)
             {
                 if (args[i] == "--no-debug")
                 {
                     debug = false;
                 }
-                else if (args[i] == "--close-request")
-                {
-                    closeRequest = true;
-                }
-                else if (args[i] == "--teacher-name")
-                {
-                    argTeacherName = args[i + 1];
-                    i++;
-                }
-                else if (args[i] == "--delay-time")
-                {
-                    argDelayTimeStr = args[i + 1];
-                    i++;
-                }
-                else if (args[i] == "--token")
-                {
-                    argToken = args[i + 1];
-                    i++;
-                }
                 else if (args[i] == "--message-id")
                 {
                     argMessage = args[i + 1];
                     i++;
                 }
-                else if (args[i] == "--base-url")
+                else if (args[i] == "--title")
                 {
-                    argBaseUrl = args[i + 1];
+                    argTitle = args[i + 1];
+                    i++;
+                }
+                else if (args[i] == "--delay-time")
+                {
+                    argDelayTimeStr = args[i + 1];
                     i++;
                 }
                 else if (args[i] == "--message-start")
@@ -83,21 +65,13 @@ namespace MessagePigeonClientStudentPopup
             else
             {
                 bool delayTimeParseSuccess = uint.TryParse(argDelayTimeStr, out uint delayTime);
-                bool messageIdParseSuccess = uint.TryParse(argMessageIdStr, out uint messageId);
                 if (!delayTimeParseSuccess)
                 {
-                    MessageBox.Show(@"时间必须为数字", @"时间错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Delay Time Must Be Number", @"Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (!messageIdParseSuccess && closeRequest)
-                {
-                    MessageBox.Show(@"消息ID必须为数字", @"消息ID错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                Application.Run(new Form2(argTeacherName, argMessage, delayTime, closeRequest, argToken, messageId,
-                    argBaseUrl));
+                Application.Run(new Form2(argTitle, argMessage, delayTime));
             }
         }
     }

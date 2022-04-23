@@ -55,13 +55,12 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(137, 0);
+            this.ClientSize = new System.Drawing.Size(205, 0);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
-            this.Text = "来自XXX老师的消息";
+            this.Text = "Title";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
