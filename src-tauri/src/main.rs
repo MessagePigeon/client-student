@@ -25,10 +25,9 @@ fn main() {
         "show" => {
           let window = app_handle.get_window("main").unwrap();
           window.show().unwrap();
+          window.set_focus().unwrap();
         }
-        "quit" => {
-          std::process::exit(0);
-        }
+        "quit" => app_handle.exit(0),
         _ => {}
       },
       _ => {}
@@ -42,10 +41,8 @@ fn main() {
       event: WindowEvent::CloseRequested { api, .. },
       ..
     } => {
-      let app_handle = app_handle.clone();
-      let window = app_handle.get_window(&label).unwrap();
       api.prevent_close();
-      window.hide().unwrap();
+      app_handle.get_window(&label).unwrap().hide().unwrap();
     }
     _ => {}
   })
