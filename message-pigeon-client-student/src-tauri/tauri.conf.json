@@ -23,7 +23,7 @@
       ],
       "resources": [],
       "externalBin": [
-        "binaries/popup"
+        "bin/popup"
       ],
       "copyright": "",
       "category": "DeveloperTool",
@@ -56,7 +56,7 @@
         "sidecar": true,
         "scope": [
           {
-            "name": "binaries/popup",
+            "name": "bin/popup",
             "sidecar": true,
             "cmd": "",
             "args": true

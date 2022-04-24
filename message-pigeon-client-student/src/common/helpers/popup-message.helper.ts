@@ -20,7 +20,7 @@ type Args = {
 type Options = { sendRequestOnClose?: boolean };
 
 export async function popupMessage(args: Args, options?: Options) {
-  const cmd = Command.sidecar('binaries/popup', [
+  const cmd = Command.sidecar('bin/popup', [
     '--no-debug',
     '--message-start',
     args.message,
