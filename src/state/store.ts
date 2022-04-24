@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import connectCode from './slices/connect-code.slice';
-import teachers from './slices/teachers.slice';
 import messages from './slices/messages.slice';
 import openingMessages from './slices/opening-messages.slice';
+import teachers from './slices/teachers.slice';
 
 export const store = configureStore({
   // `openingMessages` need to store instances, so serializable check should be false
