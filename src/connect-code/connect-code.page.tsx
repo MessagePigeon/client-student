@@ -24,7 +24,9 @@ const ConnectCodePage: React.FC = () => {
           </Button>
         }
       >
-        <Typography.Text className="text-3xl">{connectCode}</Typography.Text>
+        <Typography.Text className="text-3xl">
+          {connectCode || '请刷新'}
+        </Typography.Text>
       </Card>
       <Card title="二维码">
         <QRCodeSVG value={connectUrl} size={256} />
