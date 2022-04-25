@@ -1,12 +1,31 @@
-# Message Pigeon Student Client (Chinese Only)
+# Message Pigeon Student Client
 
 > The software of Message Pigeon for student
 
----
+## Notice
 
-我们需要 C#开发者将此项目完全重构。如果您熟悉 WPF (winforms 也行) 窗体软件开发，并能处理 HTTP 和 WebSocket 请求，欢迎联系。
+> PRs Welcome
 
-- QQ : 1351083056
-- Discord : jsun969#1144
+- **Chinese Only** Need translation
+- **Windows Only** The popup window is written in winforms
+- **TTS Unavailable** Windows Edge webview (tauri built-in browser) doesn't support Web Speech API
 
----
+## Installation
+
+```sh
+pnpm i
+```
+
+## Development
+
+### Main Window
+
+After start [backend](https://github.com/MessagePigeon/server)
+
+```sh
+pnpm run tauri dev
+```
+
+### Message Popup Window (windows only)
+
+Use Visual Studio open `/src-popup/windows/MessagePigeonClientStudentPopup.sln`
