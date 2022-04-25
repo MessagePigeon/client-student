@@ -2,12 +2,23 @@
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
 )]
+extern crate single_instance;
 
+use single_instance::SingleInstance;
 use tauri::{
   CustomMenuItem, Manager, RunEvent, SystemTray, SystemTrayEvent, SystemTrayMenu, WindowEvent,
 };
 
 fn main() {
+  let instance = SingleInstance::new("message-pigeon-student-client-jsun969").unwrap();
+  if instance.is_single() {
+    run()
+  } else {
+    std::process::exit(0);
+  }
+}
+
+fn run() {
   let tray_menu = SystemTrayMenu::new()
     .add_item(CustomMenuItem::new("show".to_string(), "显示主界面"))
     .add_item(CustomMenuItem::new("quit".to_string(), "退出"));
