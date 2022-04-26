@@ -30,13 +30,15 @@ pnpm run tauri dev
 
 #### Windows
 
-1. Use Visual Studio open `/src-popup/windows/MessagePigeonClientStudentPopup.sln`
-2. Rename compiled exe to `popup-x86_64-pc-windows-msvc.exe`
-3. Copy the compiled exe to `/src-tauri/bin`
+1. Open `/src-popup/windows/MessagePigeonClientStudentPopup.sln` with Visual Studio
+2. DEVELOPING
+3. Compile the project in release mode
+4. Rename compiled exe to `popup-x86_64-pc-windows-msvc.exe`
+5. Copy the compiled exe to `/src-tauri/bin`
 
 #### Other System
 
-Not yet. To develop, we use arguments to pass popup message data.
+Not yet. To develop, we use arguments to pass popup message data
 
 ```
 <popup binary file> --no-debug --title <Title> --message-start <Message Body> --message-end --close-delay <Close Delay Time (second)>
