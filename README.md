@@ -26,6 +26,20 @@ After start [backend](https://github.com/MessagePigeon/server)
 pnpm run tauri dev
 ```
 
-### Message Popup Window (windows only)
+### Message Popup Window
 
-Use Visual Studio open `/src-popup/windows/MessagePigeonClientStudentPopup.sln`
+#### Windows
+
+1. Use Visual Studio open `/src-popup/windows/MessagePigeonClientStudentPopup.sln`
+2. Rename compiled exe to `popup-x86_64-pc-windows-msvc.exe`
+3. Copy the compiled exe to `/src-tauri/bin`
+
+#### Other System
+
+Not yet. To develop, we use arguments to pass popup message data.
+
+```
+<popup binary file> --no-debug --title <Title> --message-start <Message Body> --message-end --close-delay <Close Delay Time (second)>
+```
+
+Then, see [Tauri Sidecar](https://tauri.studio/docs/building/sidecar/) rename and move the binary file to `/src-tauri/bin`
