@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "message-pigeon-client-student",
+    "productName": "飞鸽传书MessagePigeon",
     "version": "0.1.0"
   },
   "build": {
@@ -65,7 +65,7 @@
     },
     "windows": [
       {
-        "title": "飞鸽传书",
+        "title": "飞鸽传书MessagePigeon",
         "width": 700,
         "height": 650,
         "resizable": true,
