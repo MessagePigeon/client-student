@@ -36,6 +36,12 @@ const HistoryPage: React.FC = () => {
     }
   }, [needLoading]);
 
+  if (messages.length === 0) {
+    return (
+      <div className="text-3xl text-gray-500 text-center">暂无历史消息</div>
+    );
+  }
+
   return (
     <>
       {messages.map(({ createdAt, ...message }) => (

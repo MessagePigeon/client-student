@@ -6,6 +6,12 @@ import { teachersSelector } from '../state/slices/teachers.slice';
 const TeacherPage: React.FC = () => {
   const teachers = useAppSelector(teachersSelector);
 
+  if (teachers.length === 0) {
+    return (
+      <div className="text-3xl text-gray-500 text-center">暂无已绑定教师</div>
+    );
+  }
+
   return (
     <>
       {teachers.map(({ id, name }) => (
