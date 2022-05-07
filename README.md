@@ -41,7 +41,17 @@ pnpm run tauri dev
 Not yet. To develop, we use arguments to pass popup message data
 
 ```
-<popup binary file> --no-debug --title <Title> --message-start <Message Body> --message-end --close-delay <Close Delay Time (second)>
+<popup binary file> --arg [arg value]
 ```
+
+> The following arguments must all be used
+
+| Name        | Value Description                                                                                 | Usage                                     |
+| ----------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| No Debug    | No value, but must be added to avoid opening debug window.                                        | `--no-debug`                              |
+| Title       | Window title to display teacher name (and close delay countdown).                                 | `--title <title>`                         |
+| Message     | The message content, may contain spaces and line breaks (`\r`).                                   | `--message-start <message> --message-end` |
+| Close Delay | The window cannot be closed during this time. A countdown needs to be displayed. Unit in seconds. | `--close-delay <time>`                    |
+| Font Size   | The message content's font size. Default is 100. Minimum is 10.                                   | `--font-size <size>`                      |
 
 Then, see [Tauri Sidecar](https://tauri.studio/docs/building/sidecar/) rename and move the binary file to `/src-tauri/bin`
