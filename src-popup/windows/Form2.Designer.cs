@@ -36,11 +36,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 124);
+            this.label1.Size = new System.Drawing.Size(0, 2);
             this.label1.TabIndex = 0;
             // 
             // timer1
@@ -55,7 +55,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(205, 0);
+            this.ClientSize = new System.Drawing.Size(239, 0);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
             this.Text = "Title";

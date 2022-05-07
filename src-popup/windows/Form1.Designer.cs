@@ -34,6 +34,8 @@
             this.messageInput = new System.Windows.Forms.TextBox();
             this.titleInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.fontSizeInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -41,8 +43,8 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(271, 267);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 26);
-            this.button1.TabIndex = 3;
+            this.button1.Size = new System.Drawing.Size(72, 60);
+            this.button1.TabIndex = 4;
             this.button1.Text = "POPUP";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -99,11 +101,33 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Title :";
             // 
+            // fontSizeInput
+            // 
+            this.fontSizeInput.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fontSizeInput.Location = new System.Drawing.Point(199, 301);
+            this.fontSizeInput.MaxLength = 3;
+            this.fontSizeInput.Name = "fontSizeInput";
+            this.fontSizeInput.Size = new System.Drawing.Size(61, 26);
+            this.fontSizeInput.TabIndex = 3;
+            this.fontSizeInput.Text = "72";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(116, 304);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Font Size :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 310);
+            this.ClientSize = new System.Drawing.Size(377, 338);
+            this.Controls.Add(this.fontSizeInput);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.titleInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.messageInput);
@@ -126,6 +150,8 @@
         private System.Windows.Forms.TextBox titleInput;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox closeDelayInput;
+        private System.Windows.Forms.TextBox fontSizeInput;
+        private System.Windows.Forms.Label label3;
     }
 }
 

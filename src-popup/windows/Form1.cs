@@ -24,11 +24,20 @@ namespace MessagePigeonClientStudentPopup
             bool delayTimeParseSuccess = uint.TryParse(closeDelayInput.Text, out uint closeDelay);
             if (!delayTimeParseSuccess)
             {
-                MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
-            var popupForm = new Form2(titleInput.Text, messageInput.Text, closeDelay);
+            bool fontSizeParseSuccess = uint.TryParse(fontSizeInput.Text, out uint fontSize);
+            if (!fontSizeParseSuccess || fontSize <= 0)
+            {
+                MessageBox.Show(@"Font Size Must Be A Positive Number", @"Font Size Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            var popupForm = new Form2(titleInput.Text, messageInput.Text, closeDelay, fontSize);
             popupForm.Show();
         }
     }

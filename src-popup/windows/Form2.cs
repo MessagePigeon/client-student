@@ -15,19 +15,22 @@ namespace MessagePigeonClientStudentPopup
         public string Title;
         public string Message;
         public uint CloseDelay;
+        public uint FontSize;
 
-        public Form2(string title, string message, uint closeDelay)
+        public Form2(string title, string message, uint closeDelay,uint fontSize)
         {
             Icon = Properties.Resources.pigeon_logo;
 
             Title = title;
             Message = message;
             CloseDelay = closeDelay;
+            FontSize = fontSize;
             InitializeComponent();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            label1.Font = new Font("Microsoft YaHei", FontSize);
             label1.MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, 0);
             SetDefaultTitle();
             label1.Text = Message;

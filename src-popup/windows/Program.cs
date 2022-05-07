@@ -19,6 +19,7 @@ namespace MessagePigeonClientStudentPopup
             string argTitle = "";
             string argMessage = "";
             string argCloseDelayStr = "";
+            string argFontSizeStr = "";
             bool debug = true;
             for (int i = 0; i < args.Length; i++)
             {
@@ -39,6 +40,11 @@ namespace MessagePigeonClientStudentPopup
                 else if (args[i] == "--close-delay")
                 {
                     argCloseDelayStr = args[i + 1];
+                    i++;
+                }
+                else if (args[i] == "--font-size")
+                {
+                    argFontSizeStr = args[i + 1];
                     i++;
                 }
                 else if (args[i] == "--message-start")
@@ -67,11 +73,20 @@ namespace MessagePigeonClientStudentPopup
                 bool delayTimeParseSuccess = uint.TryParse(argCloseDelayStr, out uint closeDelay);
                 if (!delayTimeParseSuccess)
                 {
-                    MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Close Delay Time Must Be Number", @"Close Delay Time Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     return;
                 }
 
-                Application.Run(new Form2(argTitle, argMessage, closeDelay));
+                bool fontSizeParseSuccess = uint.TryParse(argFontSizeStr, out uint fontSize);
+                if (!fontSizeParseSuccess || fontSize <= 0)
+                {
+                    MessageBox.Show(@"Font Size Must Be A Positive Number", @"Font Size Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                Application.Run(new Form2(argTitle, argMessage, closeDelay, fontSize));
             }
         }
     }
