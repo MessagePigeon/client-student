@@ -81,7 +81,9 @@ export const websocketEvents = {
       },
       { sendRequestOnClose: true },
     );
-    await new Audio('/message.wav').play();
+    if (localStorage.getItem('playMessageSound') === 'true') {
+      await new Audio('/message.wav').play();
+    }
     store.dispatch(
       messagesActions.unshift({
         id: data.messageId,

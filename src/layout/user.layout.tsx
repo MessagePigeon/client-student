@@ -72,6 +72,7 @@ const UserLayout: React.FC = () => {
           { tab: '历史记录', key: '/history' },
           { tab: '连接码', key: '/connect-code' },
           { tab: '已绑定教师', key: '/teacher' },
+          { tab: '设置', key: '/settings' },
         ].map((tab) => (
           <Tabs.TabPane {...tab} className="mt-16 container mx-auto z-0">
             {location.pathname === tab.key && (

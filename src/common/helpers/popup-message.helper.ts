@@ -27,6 +27,8 @@ export async function popupMessage(args: Args, options?: Options) {
     '--message-end',
     '--close-delay',
     `${args.closeDelay}`,
+    '--font-size',
+    localStorage.getItem('fontSize')!,
     '--title',
     `来自 ${args.teacherName}老师 的消息`,
   ]);
