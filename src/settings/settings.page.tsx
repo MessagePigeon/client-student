@@ -10,9 +10,6 @@ const SettingsPage: React.FC = () => {
 
   return (
     <Form>
-      {/* <Form.Item label="开机自启动">
-        <Switch />
-      </Form.Item> */}
       <Form.Item label="消息提示音">
         <Switch checked={playMessageSound} onChange={setPlayMessageSound} />
       </Form.Item>
