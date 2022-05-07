@@ -1,6 +1,7 @@
 import { useLocalStorageState } from 'ahooks';
-import { Form, InputNumber, Switch } from 'antd';
+import { Button, Form, InputNumber, Switch } from 'antd';
 import React from 'react';
+import { testMessageFontSize } from './helper/test-message-font-size.helper';
 
 const SettingsPage: React.FC = () => {
   const [fontSize, setFontSize] = useLocalStorageState<number>('fontSize');
@@ -16,7 +17,14 @@ const SettingsPage: React.FC = () => {
         <Switch checked={playMessageSound} onChange={setPlayMessageSound} />
       </Form.Item>
       <Form.Item label="字体大小">
-        <InputNumber value={fontSize} onChange={setFontSize} />
+        <InputNumber min={10} value={fontSize} onChange={setFontSize} />
+        <Button
+          className="ml-2"
+          type="primary"
+          onClick={() => testMessageFontSize(fontSize!)}
+        >
+          测试消息
+        </Button>
       </Form.Item>
     </Form>
   );
